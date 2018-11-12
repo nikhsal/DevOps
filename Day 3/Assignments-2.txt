@@ -85,9 +85,9 @@ ls | sort
 16. Long List the content of "/etc" directory, but make sure you view it comfortably
 ls -l | more
 17. Identify all files in your home directory which the group has write permission for.
-
+ ls -l | cut -b6 | grep w | wc -l
 18. Create a listing of every user which owns a file in a given directory as well as how many files and directories they own.
-
+ls -lh | cut -b14-19 | grep ubuntu | wc -l
 19. Get a count of how many files and directories you have the execute permission for in your home directory.
 find . -perm -g+x | wc -l
 
@@ -270,8 +270,12 @@ U (Note: capital) - Undo all changes to the current line
 Let's play with some content.
 
 1. Start by creating a file and putting some content into it.
+touch file.txt
 2. Save the file and view it in both cat and less
+cat file.txt
+less file.txt
 3. Go back into the file in vi and enter some more content.
+vi file.txt
 4. Move around the content using at least 6 different movement commands.
 5. Play about with several of the delete commands, especially the ones that incorporate a movement command. Remember you may undo your changes so you don't have to keep putting new content in.
 
@@ -425,9 +429,10 @@ Let's play with some permissions.
 
 
 2. Now let's go into your any directory of your choice and change the permissions of some of the files in there. Make sure you use both the shorthand and longhand form for setting permissions and that you also use a variety of absolute and relative paths. Try removing the read permission from a file then reading it. Or removing the write permission and then opening it in vi.
-
+chmod u+w <filename>
+chmod 777 <dir>
 3. Let's play with directories now. Create a directory and put some files into it. Now play about with removing various permissions from yourself on that directory and see what you can and can't do.
-
+chmod g-x <filename>
 4. Finally, have an explore around the system and see what the general permissions are for files in other system directories such as /etc and /bin
 ls -l /etc
 ls -l /bin
