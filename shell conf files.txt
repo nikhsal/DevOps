@@ -1,0 +1,18 @@
+---Configuration files that the bash environment uses----------
+
+Types of shell:-
+
+Diff between...
+
+1. login shell (Answer the following question)
+	Q1. What is Login Shell
+	Q2. How do I use it?
+	Q3. Why do we need login shell?
+	Q4. Example of a login shell
+	
+2. non-login shell (Answer the following question)
+	Q1. What is non-login shell?
+	Q2. How do I use it?
+	Q3. Why do we need it?
+	Q4. Example of a non-login shell
+

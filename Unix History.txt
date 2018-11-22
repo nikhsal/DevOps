@@ -1,0 +1,42 @@
+MULTICS -> Multiplexed Information Computing Services
+  |
+  | (MIT, GE, Bell Labs)
+  |
+-----------------------------------------
+					|
+					|
+					UNICS --> Built using Assembly, Uniplexed Information Computing System, For Programmers
+					|
+					| (At Bell Labs, By Ken Thompson and Dennis Ritchie using C)
+					|
+					| (1970, made available for outside parties for Commercial and Education use)
+					|
+					UNIX --> Built using C (Currently is a Proprietry Software and Closed Source)
+					|
+	-------------------------------------------------------------------------------------------------
+	|				|			|		|			|
+	| (Univ of Cal, Berkeley)	| (Microsoft)		| (IBM)		| (SUN Microsystem)	|(Linus Torvalds modified unix kernel)
+	|				|			|		|			|
+	BSD				Xenix			AIX		Solaris			Linux Kernel
+	|				|								|
+	Darwin				MS DOS								|(Andy Ruben modified linux kernel)
+	|				|								|
+	MacOS,iOS,watchOS,tvOS		Windows								Android
+
+
+
+
+
+The GNU Project --> Richard Stallman
+	Its aim is to give computer users freedom and control in their use of their computers and computing devices, by collaboratively developing and providing software that is based on the following freedom rights: users are free to run the software, share it (copy, distribute), study it and modify it. GNU software guarantees these freedom-rights legally (via its license), and is therefore free software; the use of the word "free" always being taken to refer to freedom.
+
+
+
+	Linux Kernel + GNU = Linux Distros (Ubuntu, Fedora, CentOS, etc...)
+
+
+
+
+
+	
+

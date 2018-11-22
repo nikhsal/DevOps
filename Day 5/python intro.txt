@@ -1,0 +1,231 @@
+Developed by Guido van Rossum.
+
+
+Why Python?
+1. Powerful (Expressive and Productive)
+2. Huge Third Party Libraries + Good Standard Libraries
+3. Used also for Web Development using DJango, Flask , etc.
+4. Used for Sientific work using astropy, biopython, Numpy, scipy, etc.
+6. For Cloud Configuration using Ansible, Boto3 for AWS, Azure SDK for Python.
+7. For Data Analysis using Panda, matplotlib, bokeh, tensorflow, scikit learn.
+
+
+you can build anything with python from simple app to complex
+	1. Quickly
+	2. Safely
+	3. Efficiently
+
+Python is OpenSource with big community to support you in when you are in trouble.
+
+Python is not good for time sensitive and memory constraint env.
+
+Python uses white spaces to delimit code blocks, getting rid of unnecessary braces and parenthesis
+
+2 important versions of Python in common use now:-
+	1. Python2
+		older and more established		
+	2. Python3
+		fills the gap in python2
+
+python2 code will not work properly in python3 env and vice versa. Fundamentals are same.
+
+
+
+Difference between Python and Bash?
+
+Python			Bash
+
+Generic			Specific to Unix Philosophy
+Want performance	Want to do it fast
+Want to write a server	Want to write code for shell(Shell Automation)
+Has great set of lib	does not have good set of lib
+
+
+
+Anyone working on Linux/Unix System must have this both skills, like DevOps Engineers, Server Engineers, etc.
+
+
+Installing Python3 on GNU/Linux
+
+	$ python3 --version
+	$ sudo apt-get update
+
+If you are using Ubuntu 16.10 or newer, then you can easily install Python 3.6 with the following commands:
+	$ sudo apt-get install python3.6
+
+If you’re using another version of Ubuntu (e.g. the latest LTS release), we recommend using the deadsnakes PPA to install Python 3.6:
+	$ sudo apt-get install software-properties-common
+	$ sudo add-apt-repository ppa:deadsnakes/ppa
+	$ sudo apt-get update
+	$ sudo apt-get install python3.6
+
+
+Using Python2
+	$ python
+
+Using Python3
+	$ python3
+
+
+
+The two most crucial third-party Python packages are setuptools and pip.
+
+Once installed, you can download, install and uninstall any compliant Python software product with a single command. It also enables you to add this network installation capability to your own Python software with very little work.
+
+Python 2.7.9 and later (on the python2 series), and Python 3.4 and later include pip by default.
+
+To see if pip is installed, open a command prompt and run
+	$ command -v pip
+
+
+To install pip, this will automatically install the latest version of setuptools.
+	$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	$ python get-pip.py
+
+
+Note that on some Linux distributions including Ubuntu and Fedora the pip command is meant for Python 2, while the pip3 command is meant for Python 3.
+	$ command -v pip3
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+Python is a REPL - READ EVALUATE PRINT LOOPBACK
+
+Any command/stmt/expressions entered from CLI will be Read, Evaluated, Printed and LoopBack by the Python interpreter.
+
+	$ python3
+	>>> 2 + 2
+	4
+	>>> 6 * 7
+	42
+	>>> x = 5
+	>>> x
+	5
+	>>> 3 * x
+	15
+	>>> _
+	15
+	>>> _ * 2
+	30
+	>>> print ('Hello, Python')
+	Hello, Python
+	>>> [press ctrl+D to exit of REPL]
+	$
+
+ctrl+Z will terminate the python interpreter in Linux system. Be careful.
+
+Let's look at GitHub Code.
+
+Whitespace rules:-
+	1. prefer 4 spaces for indentation
+	2. Never mix spaces and tabs
+	3. Be consistent with indentation
+	4. If you want to deviate from these rules do for good, like increasing readability of teh code.
+
+
+Using Standard Library
+
+	import module_name	
+
+Example:-
+	>>> import math
+	>>> math.sqrt(81)
+	9.0
+	
+Taking help
+	>>> help
+
+Using specific help
+	>>> help(math)
+
+press q to exit the help page
+
+	>>> help(math.factorial)
+
+press q to exit the help page
+
+	>>> import math
+	>>> math.factorial(5)
+	120
+	
+Example:-
+	>>> n = 5
+	>>> k = 3
+	>>> math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
+	
+Imprting function from a module
+	>>> from math import factorial
+	>>> factorial(5)
+
+renaming the module
+	>>> from math import factorial as fact
+	>>> fact(5)
+
+For Division python has 2 operators "/"(Gives Float value) and "//"(Gives Integer value)
+
+	>>> fact(5) / fact(4)
+	
+	>>> fact(5) // fact(4)
+
+
+python can compute with large integers
+	>>> fact(14)
+
+
+
+Data Types:-
+	Scalar Types
+		int  --> Unlimited precision
+		float --> 64 bit, 15 to 16 bit of decimal precision
+		none --> NULL value, we can't display it on REPL
+		bool --> True or False
+
+Relational Operators
+	==
+	!=
+	<
+	>
+	<=
+	>=
+
+Conditional Statements
+	if expr:
+		print ("Its True")
+---------------------------------------	
+	if expr:
+		print ("Its True")
+	else:
+		print ("Its False")
+-----------------------------------------
+	if expr:
+		print ("Its True")
+	elif expr:
+		print ("Its true")
+	else:
+		print ("hmmm")
+-------------------------------------------
+while expr:
+	body
+
+-------------------------------------------
+	
+	
+	
+
+			
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

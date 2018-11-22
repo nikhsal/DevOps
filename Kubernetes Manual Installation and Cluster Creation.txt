@@ -1,0 +1,546 @@
+Kubernetes - A Container Orchestration Tool
+
+About Kubernetes
+
+1. Created in Google 
+2. Donated to CNCF in 2014 (OpenSource - Apache 2.0)
+3. Written in Go language
+4. Built by people who also built Borg and Omega
+5. Kubernetes refers to a person who steers ship (Helmsman)
+6. Also refered as K8s
+
+Probelems with Containers:-
+1. When thousands of containers are scaled up(Horozontal Scaling) many challenges occurs in terms of management, deployment and scaling.
+
+What is Kubernetes?
+1. Portable -> public, private, hybrid, multi-cloud
+2. Extensible -> modular, pluggable, hookable and compsable
+3. Self-healing -> auto-placement, auto-restart, auto-replication and auto-scaling
+
+What it does?
+1. Co-locating helper processes, facilitating composite applications and preserving the one-application-per-container model ***
+2. Mounting storage system *
+3. Distributing secrets 
+4. Checking application health *
+5. Replicating application instances **
+6. Scaling horizontally **
+7. Naming and Discovering
+8. Balancing loads
+9. Rolling Updates ***
+10. Monitoring resources
+11. Accessing and ingesting logs *
+12. Authentication and Authorization
+13. Debugging Applications
+
+
+
+This means it provides simplicity of PaaS with flexibility of IaaS and facilitates Portability across Infra Providers.
+
+
+When to use it?
+1. If you have 100s of VMs running in your infra, move to containers
+
+
+PaaS Systems that run on K8s
+1. Openshift
+2. Deis
+3. Eldarion
+
+
+
+Kubernetes Components:-
+
+Developers/Operations ---->| MASTER NODE	|----> Node1 (pod1,pod2,...)	|
+			   | (api-server, 	|----> Node2 (pod1,pod2,...)	|-----> Persistent Storage
+			   |  etcd, scheduler,	|----> Node3 (pod1,pod2,...)	|
+			   |  Controller)	|----> Node3 (pod1,pod2,...)	|
+			-------------------------------------------------------
+			|	Service Layer				      |
+			-------------------------------------------------------
+
+
+
+Master Node:-
+1. Controls the Cluster
+2. Scheduling pods
+3. Detecting and Responding to events
+4. Scaling Pods
+
+	api-server
+	1. Takes all request from Dev and Ops 
+	
+	etcd
+	1. Key-Value Database
+	2. Highly Available
+	3. Stores all info about Cluster and its config
+	
+	scheduler 
+	1. Watches newly created pods that have no nodes assigned and Selects a node for them to run on.
+	2. Checks the Resource Requirements
+	3. manages work loads
+
+	controller
+	1. Node Controller
+	2. Replication Controller
+	3. Endpoints Controller
+	4. Service Account and Token Controller
+
+
+Node:-
+1. Worker Machine
+2. Managed by Master
+3. Services includes are Docker, Kubelet and Kube-Proxy
+
+	kubelet
+	1. Watches for Pods assigned to its node
+	2. Mounts the Pod's required volumes
+	3. Download the Pod's Secrets
+	4. Runs the Pod's container via docker/rkt
+	5. Periodically executes any requested container liveness probes
+	6. Reports the status of the pod and node back to rest of the system. 
+	
+	kube-proxy
+	1. Maintains network rules on host
+	2. Performs connection forwarding
+
+	docker/rkt
+	1. used for running containers
+	
+------------------------------------------------------------------------------------------------------------------
+Installation 
+
+Minikube is Single-Node cluster for Development and Testing.
+
+   Linux:
+	$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+   MacOS:-
+	$ brew install minikube
+
+   Windows
+	download
+		https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe
+	Rename it to minikube.exe
+	Run it
+
+Requirements:-
+	kubectl
+	macOs
+		Hyperkit driver, xhyve driver, VirtualBox, or VMWare Fusion
+	Linux
+		VirtualBox or KVM
+	Windows
+		VirtualBox or HyperV
+		VT-x/AMD-v (virtualization must be enabled in BIOS)		
+		
+	Internet Connection on first run
+
+Starting K8s:-
+	$ minikube start
+	$ kubectl
+
+READY!
+
+
+------------------------------------------------------------------------------------------------------------------
+
+kubeadm - is multi-node cluster uses docker to spawn the kubernetes cluster
+
+steps given later
+
+-------------------------------------------------------------------------------------------------------------------
+Hosted Solutions:-
+1. GKP
+2. Amazon ECS for Kubernetes
+3. AKS (Azure Container Service)
+4. Stackpoint.io
+5. AppsCode.com
+6. Kube2go.io
+7. madcore.ai
+8. Openshift
+9. Platform9
+10. IBM Cloud Container Service
+11. Giant Swarm
+12. Kubermatic
+
+Universal
+1. kubeadm
+
+-------------------------------------------------------------------------------------------------
+kubeadm installation steps
+
+Requirements:-
+1. 2 or more mchines running linux OS
+2. 2 GB or more RAM per machine
+3. 2 CPUs or more on the master
+4. Full network connectivity between all machines in the cluster (public or private)
+
+Installing -> kubeadm, kubectl and kubelet (docker.io and kubernetes-cni, if needed)
+
+
+apt-get install -y apt-transport-https
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+cat << EOF > /etc/apt/sources.list.d/kubernetes.list
+
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+apt-get update
+
+apt-get install docker.io kubeadm kubectl kubelet kubernetes-cni
+
+-------------------------------------------
+Initialize the Master
+
+kubeadm init
+
+---------------------------------------------
+
+After the above command finishes successfully, look for the line as below:-
+
+"To start using your cluster, you need to run the following as a regular user:" following commad need to be run as a non-root user
+
+sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+export KUBECONFIG=$HOME/admin.conf
+
+
+Now, the below commad should work:-
+
+$ kubectl
+worked
+get all nodes in the cluster
+
+$ kubectl get nodes
+
+You see it is not ready why?
+
+$ kubectl get pods --all-namespaces
+
+Creating a pod network
+
+$ kubectl apply --filename https://git.io/weave-kube-1.6
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+
+Now, check
+
+$ kubectl get nodes
+
+$ kubectl get pods --all-namespaces
+
+------------------------------------------------------------------------------------
+You cannot run a pod on a single node, create another node and join it in the cluster of the first node.
+Pod can only run on K8s cluster.
+
+
+Now, Open login to another node, and install all tools as below:-
+$ apt-get install docker.io kubeadm kubectl kubelet kubernetes-cni
+
+join this node to the cluster
+
+$ kubeadm join ..... ........ .............
+
+-----------------------------------------------------------------------------------------------
+Now, 
+1. Either you create a docker image of your app and push it to dockerhub repository and use that image to create pod in K8s
+NOTE, before you push the image to dockerhub, don't forget to tag it with following naming convention:-
+	<docker-id-username>/<repository-name>
+
+2. Or, you can pull any existing docker image of your choice from dockerhub and create pod in K8s
+
+to do any of the above you will have create a file(Pod Definition) ".yml" which has the instruction on how to spin-up the pod in K8s
+
+
+
+Let's use the existing image from dockerhub and crreate its Pod.
+
+-------------------------------------------------------------------------------
+yml should not contain tabs but only spaces, Arrays will
+
+vi pod.yml
+
+apiVersion:v1
+kind: pod
+metadata:
+	name: myfirstpod
+	version: v1
+spec:
+	containers:
+	-  name: ctr1
+	   image: tomcat
+	   ports:
+	   -  containerPort: 8080
+
+		
+$ kubectl create -f pod.yml
+I created using pod.json
+
+$ kubectl get pods
+
+$ kubectl describe pods
+
+-------------------------------------------------------------------------------------
+Now, Let's use the our image, that we pushed it to our dockerhub repo to create Pod.
+
+
+--hello-world-pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+spec:
+  containers:
+  - name: hello-ctr
+    image: satyendrasingh/sample-demo:latest
+    ports:
+    - containerPort: 3000
+
+
+NOTE: before you execute below command to create pod, make sure you have 1 master and 1 slave node up and running.
+
+$ kubectl create -f pod.yml
+
+$ kubectl get pods 
+
+$ kubectl describe pod <pod-name>
+
+------------------------------------------------------------------------------------------------------------------------
+
+Once, the pod is up and Running, we can access the container using Port Forwarding as below:-
+
+$ kubectl port-forward sxo 8080:3000
+
+now, you can access the container from same/another shell with localhost as follows:-
+http://localhost:8080
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Inorder to access pods from IP Address(not localhost) we will have to go through ReplicationController so, that they can do other work related to pod like scaling up/down, etc.
+
+ReplicationController keeps enough/specified number of replicas continously running.
+
+
+
+---sample-demo-rc.yml
+	
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: helloworld-rc
+spec:
+  replicas: 3
+  selector:
+    app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: kuberneter-demo
+        image: satyendrasingh/sample-demo:latest
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
+
+
+
+$ kubectl create -f sample-demo-rc.yml
+replicationcontroller/helloworld-rc created
+
+$ kubectl get rc
+NAME            DESIRED   CURRENT   READY   AGE
+helloworld-rc   3         0         0       29s
+
+$ kubectl describe rc
+Name:         helloworld-rc
+Namespace:    default
+Selector:     app=hello-world
+Labels:       app=hello-world
+Annotations:  <none>
+Replicas:     0 current / 3 desired
+Pods Status:  0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=hello-world
+  Containers:
+   kuberneter-demo:
+    Image:        satyendrasingh/sample-demo:latest
+    Port:         3000/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:           <none>
+
+$ kubectl get rc -o wide
+NAME            DESIRED   CURRENT   READY   AGE     CONTAINERS        IMAGES                              SELECTOR
+helloworld-rc   3         3         3       2m57s   kuberneter-demo   satyendrasingh/sample-demo:latest app=hello-world
+
+$ kubectl get pods
+NAME                       READY   STATUS             RESTARTS   AGE
+hello-pod                  1/1     Running            0          18m
+helloworld-rc-hklgf        1/1     Running            0          2m30s
+helloworld-rc-jnmzz        1/1     Running            0          2m30s
+helloworld-rc-p5xln        1/1     Running            0          2m30s
+myfirstwebapp              1/1     Running            1          16h
+mysecondwebapp             1/1     Running            0          30m
+
+you will see 3 pods are running, now if you try to delete any one of the pod
+$ kubectl delete pod <pod-name>
+ubuntu@ip-172-31-95-104:/k$ kubectl delete pod helloworld-rc-p5xln
+pod "helloworld-rc-p5xln" deleted
+
+It will terminate, but will again come up as RC is responsible for keeping all instances up and running
+
+$ kubectl get pods
+NAME                       READY   STATUS             RESTARTS   AGE
+hello-pod                  1/1     Running            0          20m
+helloworld-rc-hklgf        1/1     Running            0          4m17s
+helloworld-rc-jnmzz        1/1     Running            0          4m17s
+helloworld-rc-zzmps        1/1     Running            0          16s
+myfirstwebapp              1/1     Running            1          16h
+mysecondwebapp             1/1     Running            0          32m
+
+
+we can also scale thorugh a commad:-
+$ kubectl scale --replicas=5 -f <rec-file-name.yml>
+OR
+$ kubectl scale --replicas=2 rc/<rc-name>
+Done
+
+Delet the Replication Controller to delete all the pods
+$ kubectl delete rc/<rc-name>
+Done
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+HOW DO WE ACCESS OUR APP?
+	From Outside the cluster, like using browser and
+	From inside the cluster?
+
+Answer is "Services"
+
+Services:
+	REST object
+	Abstractions layer around Pod
+
+			|---> Pod1 |
+Client ---> Service ----|---> Pod2 | <--> Managed by Replication Controller
+		|	|---> Pod3 |
+		|
+		|
+	---------------------------------
+	|		|		|
+	Reliable IP	Reliable Port	Reliable DNS
+	^					^
+	|					|
+	-----------------------------------------
+			|
+		Fixed (These never change)
+
+
+
+	
+Services have fixed address/endpoint to access, but, Pod has dynamic address/endpoint , hence they are not reliable
+
+
+
+			               | Pod1 |
+Client -----Cloud LB-----> Service ----| Pod2 | <--> Replication Controller
+		|		       | Pod3 |
+	Optional and Specific
+		to cloud
+
+
+
+
+
+Whenever we create Service, The Endpoint object is also created and that has the info of all Pods and their IP Address, It keeps updating incase the Pod's IP changes.
+
+
+Labels:-
+	Connects the Pods with the Service
+	
+
+get all Replication Controller	
+
+$ kubectl get rc
+NAME            DESIRED   CURRENT   READY   AGE
+helloworld-rc   3         3         3       46s
+
+***********************************************************************************************************************
+Create Service
+
+$ kubectl expose rc sample-demo-rc --name=sample-demo-service --target-port=8080 --type=NodePort
+	
+
+Let's get the Node's Port number that is mapped to a pod(app) to access the app from outside the cluster
+ 
+$ kubectl describe svc sample-demo-service
+
+In the output above copy the NodePort value (Must be greater than 30000)
+Now find out the public Ip of the node where Kubernetes is running
+
+Open the browser and type following URL:-
+http://<public-IP-of-node>:<NodePort-In-service>
+
+***************************************************************************************************************************
+--sample-demo-svc.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-demo-svc
+  labels:
+    app: sample-demo-app
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: sample-demo-app
+---------------------------------------
+
+Command used to expose public ip of ec2 instance<use --external-ip>:
+kubectl expose rc world-rc --port=8080 --target-port=8080 --name=service-demo --external-ip=54.163.128.147 --type=NodePort
+
+
+---------------------------------------
+Name:                     service-demo
+Namespace:                default
+Labels:                   app=world
+Annotations:              <none>
+Selector:                 app=world
+Type:                     NodePort
+IP:                       10.109.169.65
+External IPs:             54.163.128.147
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  30350/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

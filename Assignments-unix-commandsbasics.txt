@@ -1,4 +1,4 @@
-Objective:- Assignments will help trainees to understand the basics of unix command and how to explore and use it.
+﻿Objective:- Assignments will help trainees to understand the basics of unix command and how to explore and use it.
 
 
 ***DO NOT copy paste commands from internet, though you can take help of teh internet for the assignments below.
@@ -39,7 +39,7 @@ Assignments:-
 	ls -lt
 
 8. Diplay the location of a program/command, where it is installed.
-	which, type
+	which
 
 9. Which command is used to switch directory from one to another
 	cd
@@ -48,6 +48,7 @@ Assignments:-
 
 11. Did you notice something in the output of "env" command?
 	Yes. Path variable, Process, also old working directory
+	Capital Letter is used for environment variables
 	
 12. Which command is used to print the text or any variables value in the Console/Terminal?
 	echo
@@ -63,7 +64,7 @@ Assignments:-
 	whoami, who, w
 
 17. how do you change the currrently logged in user to another user?
-	su
+	su <username>
 
 18. Which command is used to leave a shell environment that you are currently logged in to?
 	exit
@@ -103,14 +104,14 @@ uname
 	pwd
 
 29. change the current directory to another directory that you have in your system.
-	cd 
+	cd <path>
 
 30. Go up one directory
 	cd ..
 
 31. Return to last directory
 	cd $OLDPWD
-
+	cd -
 32. change the current directory to home(logged in user's) directory
 	cd ~
 
@@ -124,7 +125,7 @@ uname
 	.bash_profile file can be used to change the HISTSIZE
 
 36. How can you modify bash's history behaviour
-	Using .bash_profile
+	HISTCONTROL
 
 37. Display all the commands entered so far, now, try to run a particular command from the history list without typing that command.
 	!<offset>
@@ -138,7 +139,7 @@ NOTE:- TAB key is your friend when it comes to command completion and having lon
 	Ksh Shell
 
 39. What is the difference between login shell and non-login shell?
-Login shell is the first process that gets executed as a part of login shell. Non-login shell is running commands on command line	
+Login shell is the first process that gets executed as a part of login shell. Non-login shell runs when application program 
 40. How do we start login shell and non-login shell?
 
 41. What happens when you start a login shell (which files are read and used and Why)?
@@ -153,7 +154,7 @@ Login shell is the first process that gets executed as a part of login shell. No
 41. What are Shell Variables, list major shell variables and what do they represent?
 	
 42. How we see all our env variables?
-	
+	env
 
 43. How we see all env variables in alphabical order?
 	

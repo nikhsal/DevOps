@@ -1,0 +1,931 @@
+Developed by Guido van Rossum.
+
+
+Why Python?
+1. Powerful (Expressive and Productive)
+2. Huge Third Party Libraries + Good Standard Libraries
+3. Used also for Web Development using DJango, Flask , etc.
+4. Used for Sientific work using astropy, biopython, Numpy, scipy, etc.
+6. For Cloud Configuration using Ansible, Boto3 for AWS, Azure SDK for Python.
+7. For Data Analysis using Panda, matplotlib, bokeh, tensorflow, scikit learn.
+
+
+you can build anything with python from simple app to complex
+	1. Quickly
+	2. Safely
+	3. Efficiently
+
+Python is OpenSource with big community to support you in when you are in trouble.
+
+Python is not good for time sensitive and memory constraint env.
+
+Python uses white spaces to delimit code blocks, getting rid of unnecessary braces and parenthesis
+
+2 important versions of Python in common use now:-
+	1. Python2
+		older and more established		
+	2. Python3
+		fills the gap in python2
+
+python2 code will not work properly in python3 env and vice versa. Fundamentals are same.
+
+
+
+Difference between Python and Bash?
+
+Python			Bash
+
+Generic			Specific to Unix Philosophy
+Want performance	Want to do it fast
+Want to write a server	Want to write code for shell(Shell Automation)
+Has great set of lib	does not have good set of lib
+
+
+
+Anyone working on Linux/Unix System must have this both skills, like DevOps Engineers, Server Engineers, etc.
+
+
+Installing Python3 on GNU/Linux
+
+	$ python3 --version
+	$ sudo apt-get update
+
+If you are using Ubuntu 16.10 or newer, then you can easily install Python 3.6 with the following commands:
+	$ sudo apt-get install python3.6
+
+If you’re using another version of Ubuntu (e.g. the latest LTS release), we recommend using the deadsnakes PPA to install Python 3.6:
+	$ sudo apt-get install software-properties-common
+	$ sudo add-apt-repository ppa:deadsnakes/ppa
+	$ sudo apt-get update
+	$ sudo apt-get install python3.6
+
+
+Using Python2
+	$ python
+
+Using Python3
+	$ python3
+
+
+
+The two most crucial third-party Python packages are setuptools and pip.
+
+Once installed, you can download, install and uninstall any compliant Python software product with a single command. It also enables you to add this network installation capability to your own Python software with very little work.
+
+Python 2.7.9 and later (on the python2 series), and Python 3.4 and later include pip by default.
+
+To see if pip is installed, open a command prompt and run
+	$ command -v pip
+
+
+To install pip, this will automatically install the latest version of setuptools.
+	$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	$ python get-pip.py
+
+
+Note that on some Linux distributions including Ubuntu and Fedora the pip command is meant for Python 2, while the pip3 command is meant for Python 3.
+	$ command -v pip3
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+Python is a REPL - READ EVALUATE PRINT LOOPBACK
+
+Any command/stmt/expressions entered from CLI will be Read, Evaluated, Printed and LoopBack by the Python interpreter.
+
+	$ python3
+	>>> 2 + 2
+	4
+	>>> 6 * 7
+	42
+	>>> x = 5
+	>>> x
+	5
+	>>> 3 * x
+	15
+	>>> _
+	15
+	>>> _ * 2
+	30
+	>>> print ('Hello, Python')
+	Hello, Python
+	>>> [press ctrl+D to exit of REPL]
+	$
+
+ctrl+Z will terminate the python interpreter in Linux system. Be careful.
+
+Let's look at GitHub Code.
+
+Whitespace rules:-
+	1. prefer 4 spaces for indentation
+	2. Never mix spaces and tabs
+	3. Be consistent with indentation
+	4. If you want to deviate from these rules do for good, like increasing readability of teh code.
+
+
+Using Standard Library
+
+	import module_name	
+
+Example:-
+	>>> import math
+	>>> math.sqrt(81)
+	9.0
+	
+Taking help
+	>>> help
+
+Using specific help
+	>>> help(math)
+
+press q to exit the help page
+
+	>>> help(math.factorial)
+
+press q to exit the help page
+
+	>>> import math
+	>>> math.factorial(5)
+	120
+	
+Example:-
+	>>> n = 5
+	>>> k = 3
+	>>> math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
+	
+Imprting function from a module
+	>>> from math import factorial
+	>>> factorial(5)
+
+renaming the module
+	>>> from math import factorial as fact
+	>>> fact(5)
+
+For Division python has 2 operators "/"(Gives Float value) and "//"(Gives Integer value)
+
+	>>> fact(5) / fact(4)
+	
+	>>> fact(5) // fact(4)
+
+
+python can compute with large integers
+	>>> fact(14)
+
+
+
+Data Types:-
+	Scalar Types
+		int  --> Unlimited precision
+		float --> 64 bit, 15 to 16 bit of decimal precision
+		none --> NULL value, we can't display it on REPL
+		bool --> True or False
+
+Relational Operators
+	==
+	!=
+	<
+	>
+	<=
+	>=
+
+Conditional Statements
+	if expr:
+		print ("Its True")
+---------------------------------------	
+	if expr:
+		print ("Its True")
+	else:
+		print ("Its False")
+-----------------------------------------
+	if expr:
+		print ("Its True")
+	elif expr:
+		print ("Its true")
+	else:
+		print ("hmmm")
+-------------------------------------------
+while expr:
+	body
+
+-------------------------------------------
+for var in lists:
+	body
+---------------------------------------------
+
+NOTE:- In python, non-zero values from expr means True and Zero as False.
+	
+
+break	
+
+			
+use "input()" to accept user input.
+use "int(arg)" to convert str to int.
+
+----------------------------------------------------------------------------------------------------------------------------
+Summary:-
+
+1. Simple Arithmetic with:-
+2. Assigning objects to named variable with:-
+3. Printing object with:-
+4. Exiting the REPL with:-
+5. Indentation with:-
+6. Importing Python Standard Library modules with:-
+7. Finding and browsing help with:-
+8. Scalar built0in types:-
+9. Relational Operators:-
+10.Conditional Statments:- 
+11. while loop:-
+12. Interupting execution with:- 
+13. Breaking out of the loop:-
+14. Requesting user input with:-
+---------------------------------------------------------------------------------------------------------------------------------
+Functions:-
+
+def f1(param):
+	<code>
+	return <val>
+
+f1(param)
+
+-----------------------------------------------------------------------------------------------------------------------------
+Modules:-
+
+calc.py
+
+import math
+
+def add_numbers(num1, num2):
+	return num1+num2
+
+def sub_numbers(num1, num2):
+	return num1-num2
+
+
+$ python3
+>>> import calc
+>>> calc.add_numbers(10,20)
+>>> ans = calc.add_numbers(10,20)
+>>> ans
+30
+>>> ans = calc.sub_numbers(10,20)
+>>> ans
+-10
+
+We can also import specific function:-
+
+>>> from calc import sub_numbers
+>>> ans = sub_numbers(10, 20)
+>>> ans
+-10
+
+--------------------------------------------------------------------------------------------------------------------------
+Special Attributes in Python starts and ends with double underscores:-
+Example:-
+	__name __
+
+	
+calc.py
+
+import math
+
+def add_numbers(num1, num2):
+	return num1+num2
+
+def sub_numbers(num1, num2):
+	return num1-num2
+
+print (__name__)
+
+>>> import calc
+calc
+>>> import calc
+>>>
+
+modules are imported only once
+
+
+
+If the module has function then it will not execute from python3 command(As a script)
+So, use __name__ special variable to excute the function when filename of python code is passed to python3 command
+
+
+The below says, that the __name__ value is ___main__ if the it is the main module
+$ python3 calc.py
+__main__
+$ 
+
+
+
+The below if stmt makes your function run as a script.
+
+calc.py
+
+import math
+
+def add_numbers(num1, num2):
+	return num1+num2
+
+def sub_numbers(num1, num2):
+	return num1-num2
+
+if __name__ == __main__:
+	add_numbers(20,30)
+	sub_numbers(30,20)
+--------------------------------------------------------------------------------------------------------------------------
+
+calc.py
+
+import math
+
+def add_numbers(num1, num2):
+	return num1+num2
+
+def sub_numbers(num1, num2):
+	return num1-num2
+
+if __name__ == "__main__":
+	add_numbers(20,30)
+	sub_numbers(30,20)
+
+
+>>> from calc import (add_numbers, sub_numbers)
+>>> ans = add_numbers(20,30)
+>>> ans
+50
+>>> ans = sub_numbers(20,30)
+>>> ans
+-10
+
+
+>>> from calc import *
+>>> ans = add_numbers(20,30)
+>>> ans
+50
+>>> ans = sub_numbers(20,30)
+>>> ans
+-10
+
+Avoid the above import
+
+---------------------------------------------------------------------------------------------------------------------------
+main() function with CLA
+
+calc.py
+
+import sys
+
+def add_numbers(num1, num2):
+	return num1+num2
+
+def sub_numbers(num1, num2):
+	return num1-num2
+
+def main():
+	add_numbers(sys.argv[1], sys.argv[2])
+	sub_numbers(sys.argv[1], sys.argv[2])
+	
+if __name__ == "__main__":
+	main()
+
+
+
+$ python3 calc.py 200 300
+
+
+
+Now we can't test the main function from REPL, because of CLA.
+
+
+
+
+calc.py
+
+import sys
+
+def add_numbers(num1, num2):
+	return num1+num2
+
+
+def sub_numbers(num1, num2):
+	return num1-num2
+
+
+def main(num1, num2):
+	add_numbers(num1, num2)
+	sub_numbers(num1, num2)
+
+	
+if __name__ == "__main__":
+	main(sys.argv[1], sys.argv[2])
+
+
+
+
+Now it is possible to main from REPL
+
+>>> from calc import *
+>>> ans = main(30, 40)
+>>> ans
+
+
+
+Always leave 2 lines between 2 functions in python.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Documenting your code using docstrings using """ comments """.
+
+
+calc.py
+
+import sys
+
+def add_numbers(num1, num2):
+	"""Add 2 numbers"""
+	return num1+num2
+
+
+def sub_numbers(num1, num2):
+	"""Subtract 2 numbers
+	
+	Args:
+		num1: the first operand
+		num2: the second operand
+	Returns:
+		A calculated value using appropriate operator
+	"""
+	return num1-num2
+
+
+def main(num1, num2):
+	add_numbers(num1, num2)
+	sub_numbers(num1, num2)
+
+	
+if __name__ == "__main__":
+	main(sys.argv[1], sys.argv[2])
+
+
+
+>>> from calc import (add_numbers, sub_numbers)
+>>> help(add_numbers)
+>>> help(sub_numbers)
+
+
+
+
+
+
+calc.py
+
+"""
+Does some Arithmetic Calculations
+
+Usage:
+	python3 calc.py <num1> <num2>	
+"""
+
+import sys
+
+def add_numbers(num1, num2):
+	"""Add 2 numbers"""
+	return num1+num2
+
+
+def sub_numbers(num1, num2):
+	"""Subtract 2 numbers
+	
+	Args:
+		num1: the first operand
+		num2: the second operand
+	Returns:
+		A calculated value using appropriate operator
+	"""
+	return num1-num2
+
+
+def main(num1, num2):
+	add_numbers(num1, num2)
+	sub_numbers(num1, num2)
+
+	
+if __name__ == "__main__":
+	main(sys.argv[1], sys.argv[2])
+
+
+>>> import calc
+>>> help(calc)
+
+------------------------------------------------------------------------------------------------------------------------------------
+Comments in Python:-
+
+# comment here.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Shebang
+
+
+calc.py
+
+
+#!/usr/bin/env python3
+"""
+Does some Arithmetic Calculations
+
+Usage:
+	python3 calc.py <num1> <num2>	
+"""
+
+import sys
+
+def add_numbers(num1, num2):
+	"""Add 2 numbers"""
+	return num1+num2
+
+
+def sub_numbers(num1, num2):
+	"""Subtract 2 numbers
+	
+	Args:
+		num1: the first operand
+		num2: the second operand
+	Returns:
+		A calculated value using appropriate operator
+	"""
+	return num1-num2
+
+
+def main(num1, num2):
+	add_numbers(num1, num2)
+	sub_numbers(num1, num2)
+
+	
+if __name__ == "__main__":
+	main(sys.argv[1], sys.argv[2])
+
+
+$ chmod u+x calc.py
+$ ./calc.py 30 40
+
+
+The Shebang above also works with WindowsOS from Python 3.3 with the help of PyLauncher.
+
+> calc.py 30 40
+------------------------------------------------------------------------------------------------------------------------
+Strings:-
+
+>>> "first" "second"
+'firstsecond'
+
+For Strings with new line
+1. Multiline Strings
+
+>>> """This is
+... a multiline
+... string"""
+'This is \na multiline \nstring'
+
+NOTE: You can also use single quotes instead of double quotes
+
+>>> m = 'This string \noccupy multiple \nlines' 
+>>> m
+'This string \noccupy multiple \nlines' 
+>>> print (m)
+This string
+occupy multiple
+lines
+
+NOTE:- In windows also, \n works as a new line, it is Universal newlines '\n' in python.
+
+
+2. Escape Sequences
+
+>>> "I said, \'Get a glass of water.\'"
+"I said, 'Get a glass of water.'"
+
+Raw String:
+>>> url = r'http://hostname:8080/path/filename.html'
+>>> print (url)
+'http://hostname:8080/path/filename.html'
+
+>>> str(129)
+'129'
+>>> str(4.3)
+'4.3'
+
+>>> str = "HelloWorld!"
+>>> str[1]
+e
+
+NOTE:- string indexes/offset starts from Zero.
+
+>>> help(str)
+
+
+>>> s1 = "mumbai"
+>>> s1.capitalize()
+Mumbai
+>>> print (s1)
+mumbai
+
+NOTE:- Strings are immutable and they are Unicode as well
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Bytes:
+Sequence of byte
+bytes are Immutable
+
+>>> x = b'some bytes'
+>>> print (x)
+
+>>> x.split()
+
+NOTE: object.encode() and object.decode('utf-8') functions are used to convert byte to string and string to byte respectively.
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+Lists:
+sequence of objects
+Lists are Mutable
+
+>>> numbers = [1, 2, 3, 45, 56]
+>>> names = ["Rohit", "Mohit"]
+
+>>> names[1]
+"Mohit"
+
+>>> names[1] = "Maahi"
+>>> names[1]
+"Maahi"
+
+>>> names[2] = 100
+>>> names
+["Rohit", "Mohit", 100]
+
+
+>>> unknown = []
+>>> unknown.append(100)
+>>> unknown
+[100]
+
+>>> unknown.append(200)
+>>> unknown
+[100, 200]
+
+Using Constructor to create sequence of objects
+
+>>> list("hello")
+['h','e','l','l','o']
+ 
+>>> for number in numbers:
+	print(number)
+
+------------------------------------------------------------------------------------------------------------------------
+Dictionaries:
+Key-Value pair
+Are Mutable
+Does not maintain order of insertion
+
+{K:V, K1:V1}
+
+>>> contacts = { "Rohit":976756433, "Mohit": 876755433 }
+>>> print (contacts)
+
+>>> contacts
+
+>>> contacts['Mohit']
+
+>>> contacts['Mohit'] = 53454765
+
+>>> contacts['Suresh'] = 7656565
+
+>>> accounts = {}
+
+
+>>> for contact in contacts:
+...	print (contact, contacts[contact])
+...
+
+-----------------------------------------------------------------------------------------------------------------------
+Hunt Assignment:-
+	with block in python
+ 
+------------------------------------------------------------------------------------------------------------------------
+Objects:
+
+Varibales are immutable
+
+>>> x = 100
+>>> id(x)
+
+>>> x = 200
+>>> id(x)
+
+>>> x = 100
+>>> y = 100
+>>> id(x)
+>>> id(y)
+>>> id(x) == id(y)
+
+id can be replaced with "is" operator. operator "is" checks if both the reference is pointing to the same object
+
+>>> x is y
+True
+
+>>> x is none
+
+
+>>> i = 100
+>>> id(i)
+>>> i += 10
+>>> id(i)
+
+
+
+>>> l1 = [1, 2, 3]
+>>> l1
+>>> l2 = l1
+>>> l2
+>>> l2[1] = 100
+>>> l2
+>>> l1
+>>> l1 is l2
+
+
+
+
+>>> l1 = [1, 2, 3]
+>>> l2 = [1, 2, 3]
+>>> l1 == l2
+>>> l1 is l2
+
+NOTE:
+== operator checks the content(Equality) --> Equality Check
+is operator checks the Same object(Identity) --> Identity Check
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Function Arguments:
+objects are passed as a reference value to the function param not the copy of object.
+
+
+
+Default Arguments:
+
+>>> def f1(a, b=100):
+... 	
+
+
+NOTE:- Functions Parameter can be passed in any sequence as long as you are using "=" operator and assigning a value with param name.
+
+>>> def fun(x, y=10):
+	print('x ', x)
+	print('y ', y)
+
+>>> func(10, 20)
+10
+20
+
+>>> func(10)
+10
+10
+
+>>> func(y=20, x=30)
+30
+20
+
+
+NOTE: Default Args are evaluated when "def" is evaluated. They can be modified like any other object
+NOTE: Never use empty object as a default value in def args.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+Python Type System:
+
+Python type system is Strong and Dynamic
+
+Dynamic -> the type of the data is resolved at runtime
+
+Strong -> the type of data can't be implicitly converted
+	E.g.:
+		>>> x = "Hello"
+		>>> y = 10
+		>>> x + y
+		
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Python Scopes
+
+1. Local -> defined inside teh current func
+2. Enclosing -> defined in any and all enclosing func
+3. Global -> defined at the top level module
+4. Built-in -> provided by the builtins module
+ 
+The above is also the sequence in which variables are found.
+
+
+scopes.py
+--------
+
+count = 0
+
+def show_count():
+	print(count)
+
+def set_count(c):
+	count = c
+
+
+>>> from scopes import *
+>>> show_count()
+>>> set_count(100)
+>>> show_count()
+
+
+scopes.py
+--------
+
+count = 0
+
+def show_count():
+	print(count)
+
+def set_count(c):
+	global count
+	count = c
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+To find teh type of object
+
+>>> type(obj)
+
+
+To find the attributes of object
+
+>>> dir(obj)
+
+
+finding the name and documentation of the function
+
+>>> obj.func.__name__
+>>> obj.func.__doc__
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+1. Tuple
+	Immutable sequence of hetregenous objects
+	Objects cannot be replaced or removed
+	new elements cannot be added
+	created within parethesis
+	saperated by commas
+	access element with bracket, Zero indexed
+	len(t) for number of elements
+	Iteration with for loop
+	+ for concatenation
+	repetition with * operator
+	Can have nested tuples
+	tuple with single object must have trailing comma
+		t = (129,)
+	empty tuple
+		t = ()
+	you can also omit the parenthesis, mostly used when returning multiple values from a function
+		t = 1, 2, 3, 4, 5
+	
+
+		return n, m, a, b
+
+	min, max = minmax([83, 56, 23, 12, 34, 67, 54, 34 , 56, 77, 89])
+	print(min)
+	print(max)
+
+
+Self-Study
+
+2. String
+	The + operator can be used for string concatenation.
+	Strings are immutable, so the += operator binds the reference to a new object
+	Use carefully, + and += can cause performance issues
+
+3. Range
+4. List
+5. Shallow Copies
+6. List Repetition
+7. Growing Lists
+8. Reversing and Sorting List
+9. Dictionary
+10. Set
+11. Collection Protocols
+12. Exception Handling
+13. OOP Concepts
+14. Database Connectivity
+15. map and lambda
+16. file io and operations
+17. decorator
+

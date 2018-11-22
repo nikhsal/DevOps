@@ -1,0 +1,68 @@
+Linux System Architecture
+
+The Linux Operating System’s architecture primarily has these components: the Kernel, Hardware layer, System library, Shell and System utility.
+
+1. The kernel is the core part of the operating system, which is  responsible for all the major activities of the LINUX operating system. 
+This operating system consists of different modules and interacts directly with the underlying hardware. 
+The kernel offers the required abstraction to hide  application programs or low-level hardware details to the system. 
+
+The types of Kernels are as follows:
+	Monolithic Kernel
+	Micro kernels
+	Exo kernels
+	Hybrid kernels
+
+
+2. System libraries are special functions, that are used to implement the functionality of the operating system and do not require code access rights of kernel modules.
+
+3. System Utility programs are liable to do individual, and specialized-level tasks.
+
+4. Hardware layer of the LINUX operating system consists of peripheral devices such as RAM, HDD, CPU.
+
+5. The shell is an interface between the user and the kernel, and it affords services of the kernel. It takes commands from the user and executes kernel’s functions. The Shell is present in different types of operating systems, which are classified into two types:command line shells and graphical shells.
+
+The command line shells provide a command line interface, while the graphical line shells provide a graphical user interface. Though both shells perform operations, but the graphical user interface shells perform slower than the command line interface shells. Types of shells are classified into four:
+
+Korn shell
+Bourne shell
+C shell
+POSIX shell
+
+
+-------Features of Linux Operating System
+
+The main features of Linux operating system are
+
+Portable: Linux operating system can work on different types of hardwares as well as Linux kernel supports the installation of any kind of hardware platform.
+
+Open Source: Source code of LINUX operating system is freely available and,  to enhance the ability of the LINUX operating system, many teams work in collaboration.
+
+
+ 
+Multiuser: Linux operating system is a multiuser system, which means, multiple users can access the system resources like RAM, Memory or Application programs at the same time.
+
+Multiprogramming: Linux operating system is a multiprogramming system, which means multiple applications can run at the same time.
+
+Hierarchical File System: Linux operating system affords a standard file structure in which system files or user files are arranged.
+
+Shell: Linux operating system offers  a special interpreter program, that  can be used to execute commands of the OS. It can be used to do several types of operations like call application programs, and so on.
+
+Security: Linux operating system offers user security systems using authentication features like encryption of data or password protection or  controlled access to particular files.
+
+
+-----Applications of Linux Operating System
+
+Nowadays, Linux is a multi billion dollar industry. Thousands of companies and governments around the world are using Linux OS due to affordability, lower licensing fee  and time and money. Linux is used in a number of electronic devices, which are available for consumers worldwide. The list of some of popular Linux based electronic devices includes:
+
+Dell Inspiron Mini 9 and 12
+Garmin Nuvi 860, 880, and 5000
+Google Android Dev Phone 1
+HP Mini 1000
+Lenovo IdeaPad S9
+Motorola MotoRokr EM35 Phone
+One Laptop Per Child XO2
+Sony Bravia Television
+Sony Reader
+TiVo Digital Video Recorder
+Volvo In-Car Navigation System
+Yamaha Motif Keyboard
