@@ -1,0 +1,37 @@
+Today's Agenda:
+
+GitHub Repo
+EC2 Instance with Jenkins
+EC2 Instance (Staging Env)
+EC2 Instance (Production Env)
+
+Sample Project
+Push it to GitHub Repo
+Create a Jenkins Job
+	This Job will trigger the build for a Project on GitHUb
+	On Successful Build
+		Create a Docker Image
+		
+		Push it to Staging
+		Run the Container
+		OR
+		Push the Docker Image to DockerHub
+		Pull the Docker Image from the DockerHub into Staging Env
+		Run the Container
+	On Failure
+		Send the Email notification to any emailId from Jenkins about the failure.
+
+
+===============================================================================================
+
+Jenkins Assignment: Automated CI-CD Pipeline in Jenkins
+
+Automated CI CD Created for Project present at nikhsal/maven-project
+Jenkinsfile and Dockerfile present in the same repo
+
+
+***Pipeline using Automatic polling in git
+***Pushed image after creation to Dockerhub
+***Git Webhook as automated trigger tried but does not work-some issue with web hook
+***Created pipeline on the same instance which can be used for separate EC2 instances
+
