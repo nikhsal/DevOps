@@ -49,24 +49,8 @@ Proper communication between the two - 15 points
 Scripts to run the containers - 15 points
 README file - 10 points
 
+===========================================
 Server and Client apps created in Python
 Server and Client container created in same network using
 
-docker create network mynetwork
-docker create volume clientvol
-docker create volume servervol
-docker run docker connect mynetwork myserver --alias=myserver
-docker connect mynetwork myserver --alias=myclient 
-
-Dockerfile
-
-FROM:ubuntu:latest
-RUN mkdir serverdata
-COPY server.py /
-RUN apt-get update
-RUN apt-get install -y python
-CMD [
-
-docker build . myserver
-docker run -v servervol:/serverdata image-name
-docker run -v servervol:/serverdata image-name
+Assignment uploaded in folder Docker Assignment 2
