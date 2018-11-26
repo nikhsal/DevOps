@@ -1,0 +1,29 @@
+Assignment - Dockers and Containers
+
+---Introduction
+The goal of this assignment is to get you familiarized with CI-CD Pipeline for Creating docker images after successfull build.
+
+
+You already built 2 app(client and server) from the "Part 1" Assignment.
+
+
+NOTE: You should be able to get the docker image for both Client and Server after successfull build using Jenkins Pipeline.
+
+
+Your Client app and Server app must be in the github.
+Whenever developer commits changes to client/server app in github, it should trigger a build on Jenkins.
+Jenkins Pipeline should do maven clean and package
+Jenkins Pipeline should also do the static-code analysis using (checkstyle/sonarqube)
+Jenkins pipeline at the end should create docker image
+On build failure, Jenkins pipeline should send an email to any emailId about the failure.
+
+
+
+---Grade Distribution
+
+Proper Build trigger - 20 points
+Proper Declarative Jenkins file - 20 points
+Clean, Package and Code Analysis - 20 points
+Creating docker image on successful build - 20 points
+Sending email on build failure - 20 points
+
