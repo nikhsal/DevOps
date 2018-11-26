@@ -200,6 +200,8 @@ docker top
 	vi Dockerfile
 	From tomcat:7.0
 	RUN /usr/local/tomcat/webapps/
+	USER root
+
 45. Create one or more Dockerfile that demostrate the following commands in Dockerfile (Write a PoC for each in one or more Dockerfile)
 	1. USER
 	2. RUN
@@ -209,6 +211,8 @@ docker top
 	6. ENTRYPOINT
 	7. EXPOSE
 	8. VOLUME
+
+Dockerfiles present in Git under Maven-Project and DockerClientServer. It shows use of RUN, CMD, ENTRYPOINT, EXPOSE, WORKDIR, VOLUME
 	
 46. Dockerhub:-
 	Find a application you care about on docker hub.
@@ -217,4 +221,6 @@ docker top
 	Save (commit) the image.
 	Upload that to docker hub in your account and share it with a colleague, ask them to use your image and run the container out of it in their machine/vm.
 	done
+This is completed.
+Dockerhub ID: nik0904
 
