@@ -552,13 +552,16 @@ Let's play with some patterns.
 1. A good directory to play with is /etc which is a directory containing config files for the system. As a normal user you may view the files but you can't make any changes so we can't do any harm. Do a listing of that directory to see what's there. Then pick various subsets of files and see if you can create a pattern to select only those files.
 
 2. Do a listing of /etc with only files that contain an extension.
+find . -type f -name '*.*'
 
 3. What about only a 3 letter extension?
+find . -type f -name '*.???'
 
 4. How about files whose name contains an uppercase letter? (hint: [[:upper:]] may be useful here)
+ls -d -- *[[:upper:]]*
 
 5. Can you list files whose name is 4 characters long?
-
+ls -d /tmp/????
 
 ----Activities
 Let's mangle some data. You can use the plato_republic.txt file

@@ -203,15 +203,18 @@ Login shell is the first process that gets executed as a part of login shell. No
 61. Explain the Linux File System.
 
 62. Explain absolute and Relative Paths
+Absolute paths start from root and have / at the beginning. Relative paths start from the current directory.
 
 63. What are the different ways of creating a File in linux System? Write an example of each and the difference between them.
 
 64. In how many ways we can delete the files from linux system? write an example of each and teh difference between them.
+using vi , touch (creates empty file), nano 
 
 65. Archiving files using linux command, write a command to archive set of files from linux commands.
+$ tar -cf archive.tar inputfile1 inputfile2
 
 66. Extract the archived files from the above step.
-
+$ tar -xf archive.tar
 
 
 
