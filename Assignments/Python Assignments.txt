@@ -575,9 +575,21 @@ Then, the output of the program should be:
 Hints:
 In case of input data being supplied to the question, it should be assumed to be a console input.
 We use itemgetter to enable multiple sort keys.
+-----------Program:getter.py--------------
+import operator
+x = True
+a=[]
+while x:
+    y=input("Enter name age and score<comma-separated>. Press n to stop ")
+    y1=y.split(",")
+    if y=='n':
+        break
+    else:
+        a.append(y1)
 
-
-
+a.sort(key=lambda r:r[0])
+a.sort(key=operator.itemgetter(0,1,2))
+print(a)
 
 
 
@@ -595,8 +607,6 @@ class Generat:
 g=Generat()
 n=int(input("Enter n: "))
 g.div7(n)
-
-
 
 
 Question:
@@ -618,9 +628,32 @@ Then, the output of the program should be:
 
 Hints:
 In case of input data being supplied to the question, it should be assumed to be a console input.
-
-
-
+------------Program:robot.py------------------
+import math
+x = True
+a=[]
+t=0
+while x:
+    y=input("Enter UP DOWN LEFT RIGHT with value. To stop press n ")
+    y1 = y.split()
+    if y=='n':
+        break
+    else:
+        a.append(y1)
+        t+=1
+xcor=0
+ycor=0
+for i in a:
+    if i[0]=='UP':
+        ycor += int(i[1])
+    elif i[0]=='DOWN':
+        ycor -= int(i[1])
+    elif i[0]=='LEFT':
+        xcor+=int(i[1])
+    elif i[0]=='RIGHT':
+        xcor-=int(i[1])
+dist=math.sqrt(xcor**2 + ycor**2)
+print("Distance: ",int(dist))
 
 
 
@@ -644,8 +677,14 @@ to:1
 Hints
 In case of input data being supplied to the question, it should be assumed to be a console input.
 
-
-
+--------------Program: countsort.py---------------------
+g=input("Enter string:")
+l=g.split()
+freq=[l.count(i) for i in l]
+d=dict(zip(l,freq))
+s=sorted(d)
+ls={j:d[j] for j in s}
+print(ls)
 
 
 Question:
@@ -654,8 +693,11 @@ Question:
 Hints:
     Using the ** operator
 
-
-
+------------------Program: sqval.py---------------
+def square(n):
+    return n**2
+n=input("Enter number")
+print("Square",square(int(n)))
 
 
 Question:
@@ -666,6 +708,11 @@ Question:
 Hints:
     The built-in document method is __doc__
 
+----------Program:document.py------------
+def myfunc():
+    """'myfunc' this is help."""
+
+print(myfunc.__doc__)
 
 
 
@@ -677,8 +724,15 @@ Hints:
     Define a instance parameter, need add it in __init__ method
     You can init a object with construct parameter or set the value later
 
+-----------Program: instance.py--------------
+class A:
+    a="I am a class attribute"
 
-
+x=A()
+x.a="I am instance attribute"
+print("Instance x",x.a)
+y=A()
+print("Instance y", y.a)
 
 
 
@@ -688,7 +742,12 @@ Define a function which can compute the sum of two numbers.
 Hints:
 Define a function with two numbers as arguments. You can compute the sum in the function and return the value.
 
+def sum1(a,b):
+    return a+b
 
+a=input("First number: ")
+b=input("Second number:")
+print("Sum:", sum1(int(a),int(b)))
 
 
 Question:
@@ -697,7 +756,12 @@ Define a function that can convert a integer into a string and print it in conso
 Hints:
 
 Use str() to convert a number to string.
-
+-----------------Program:int2str.py--------------------
+def string1(n):
+    return str(n)
+	
+x = 1
+print(string1(x))
 
 
 
@@ -706,9 +770,12 @@ Define a function that can receive two integral numbers in string form and compu
 Hints:
 
 Use int() to convert a string to integer.
-
-
-
+-------------Program:str2int.py--------------------
+def int1(n):
+    return int(n)
+	
+x = "123"
+print(int1(x))
 
 
 Question:
@@ -718,8 +785,13 @@ Hints:
 
 Use + to concatenate the strings
 
+-------------Program:twostrings.py----------------
+def concatenate(str1,str2):
+    return str1+str2
 
-
+x=input("First string")
+y=input("Second string")
+print(concatenate(x,y))
 
 
 Question:
@@ -728,9 +800,18 @@ Define a function that can accept two strings as input and print the string with
 Hints:
 
 Use len() function to get the length of a string
+--------------Program: lenstrings.py---------------
+def length(str1,str2):
+    if len(str1)>len(str2):
+        return str1
+    elif len(str1)<len(str2):
+        return str2
+    else:
+        return str1+str2
 
-
-
+x=input("First string")
+y=input("Second string")
+print(length(x,y))
 
 
 Question:
@@ -739,10 +820,15 @@ Define a function that can accept an integer number as input and print the "It i
 Hints:
 
 Use % operator to check if a number is even or odd.
+-----------Program: oddeven.py-------------
+def oddeven(n):
+    if n%2==0:
+        print("This is an even number")
+    else:
+        print("This is an odd number")
 
-
-
-
+x=input("Enter a number")
+oddeven(int(x))
 
 
 Question:
@@ -752,9 +838,15 @@ Hints:
 
 Use dict[key]=value pattern to put entry into a dictionary.
 Use ** operator to get power of a number.
+---------Program: dictsquare.py-------------
+def sqdict():
+    x=[1,2,3]
+    dict1={}
+    for i in x:
+        dict1[i]=i**2
+    print(dict1)
 
-
-
+sqdict()
 
 
 Question:
@@ -765,9 +857,14 @@ Hints:
 Use dict[key]=value pattern to put entry into a dictionary.
 Use ** operator to get power of a number.
 Use range() for loops.
+-----------Program:dictsquare1.py----------------------
+def sqdict():
+    dict1={}
+    for i in range(21):
+        dict1[i]=i**2
+    print(dict1)
 
-
-
+sqdict()
 
 
 Question:
@@ -780,9 +877,14 @@ Use ** operator to get power of a number.
 Use range() for loops.
 Use keys() to iterate keys in the dictionary. Also we can use item() to get key/value pairs.
 
+----------Program:dictsquare2.py--------------
+def sqdict():
+    dict1={}
+    for i in range(21):
+        dict1[i]=i**2
+    print(dict1.values())
 
-
-
+sqdict()
 
 Question:
 Define a function which can generate a dictionary where the keys are numbers between 1 and 20 (both included) and the values are square of keys. The function should just print the keys only.
@@ -793,10 +895,14 @@ Use dict[key]=value pattern to put entry into a dictionary.
 Use ** operator to get power of a number.
 Use range() for loops.
 Use keys() to iterate keys in the dictionary. Also we can use item() to get key/value pairs.
+------------Program:dictsquare3.py-------------
+def sqdict():
+    dict1={}
+    for i in range(21):
+        dict1[i]=i**2
+    print(dict1.keys())
 
-
-
-
+sqdict()
 
 
 Question:
@@ -807,8 +913,14 @@ Hints:
 Use ** operator to get power of a number.
 Use range() for loops.
 Use list.append() to add values into a list.
+-------------------Program: listsquare.py---------------
+def sqlist():
+    list1=[]
+    for i in range(21):
+        list1.append(i**2)
+    print(list1)
 
-
+sqlist()
 
 
 Question:
@@ -821,10 +933,14 @@ Use range() for loops.
 Use list.append() to add values into a list.
 Use [n1:n2] to slice a list
 
+----------Program: listsquare1.py--------------
+def sqlist():
+    list1=[]
+    for i in range(21):
+        list1.append(i**2)
+    print(list1[0:5])
 
-
-
-
+sqlist()
 
 
 Question:
@@ -837,8 +953,14 @@ Use range() for loops.
 Use list.append() to add values into a list.
 Use [n1:n2] to slice a list
 
+----------Program: listsquare1.py--------------
+def sqlist():
+    list1=[]
+    for i in range(21):
+        list1.append(i**2)
+    print(list1[0:5])
 
-
+sqlist()
 
 
 
@@ -854,6 +976,14 @@ Use [n1:n2] to slice a list
 
 
 
+----------Program: listsquare1.py--------------
+def sqlist():
+    list1=[]
+    for i in range(21):
+        list1.append(i**2)
+    print(list1[0:5])
+
+sqlist()
 
 
 
@@ -868,6 +998,14 @@ Use list.append() to add values into a list.
 Use tuple() to get a tuple from a list.
 
 
+----------Program: tuplesquare1.py--------------
+def sqlist():
+    list1=[]
+    for i in range(21):
+        list1.append(i**2)
+    print(tuple(list1))
+
+sqlist()
 
 
 
@@ -878,8 +1016,10 @@ With a given tuple (1,2,3,4,5,6,7,8,9,10), write a program to print the first ha
 Hints:
 
 Use [n1:n2] notation to get a slice from a tuple.
-
-
+---------Program:tuples.py-----------
+t=(1,2,3,4,5,6,7,8,9,10)
+print(t[0:5])
+print(t[5:])
 
 
 Question:
@@ -889,7 +1029,10 @@ Hints:
 
 Use "for" to iterate the tuple
 Use tuple() to generate a tuple from a list.
-
+-----------Program:tupleseven.py-------------
+t=(1,2,3,4,5,6,7,8,9,10)
+t2=[i for i in t if i%2==0]
+print(tuple(t2))
 
 
 
@@ -899,8 +1042,12 @@ Write a program which accepts a string as input to print "Yes" if the string is 
 Hints:
 
 Use if statement to judge condition.
-
-
+----------Program:string11.py------------
+x=input("Enter yes or no")
+if x.lower()=='yes':
+    print("Yes")
+else:
+    print("No")
 
 
 Question:
@@ -910,10 +1057,10 @@ Hints:
 
 Use filter() to filter some elements in a list.
 Use lambda to define anonymous functions.
-
-
-
-
+----------Program:lambdafilter.py-----------
+my_list=[1,2,3,4,5,6,7,8,9,10]
+my_list = list(filter(lambda x: x%2==0, my_list))
+print(my_list)
 
 
 Question:
@@ -923,6 +1070,10 @@ Hints:
 
 Use map() to generate a list.
 Use lambda to define anonymous functions.
+----------Program:lambdamap.py------------
+items = [1, 2, 3, 4, 5,6,7,8,9,10]
+squared = list(map(lambda i:i**2,items))
+print(squared)
 
 
 
@@ -936,7 +1087,12 @@ Hints:
 Use map() to generate a list.
 Use filter() to filter elements of a list.
 Use lambda to define anonymous functions.
+-----------Program:lambdamapfilter.py-----------
 
+items = [1, 2, 3, 4, 5,6,7,8,9,10]
+even = list(filter(lambda x:x%2==0,items))
+squared = list(map(lambda i:i**2,even))
+print(squared)
 
 
 
@@ -948,6 +1104,9 @@ Hints:
 Use filter() to filter elements of a list.
 Use lambda to define anonymous functions.
 
+my_list=range(21)
+my_list = list(filter(lambda x: x%2==0, my_list))
+print(my_list)
 
 
 
@@ -959,6 +1118,9 @@ Hints:
 Use map() to generate a list.
 Use lambda to define anonymous functions.
 
+items = range(21)
+squared = list(map(lambda i:i**2,items))
+print(squared)
 
 
 
@@ -969,6 +1131,15 @@ Define a class named American which has a static method called printNationality.
 Hints:
 
 Use @staticmethod decorator to define class static method.
+---------Program: staticmethod1.py-----------
+
+class American:
+
+    @staticmethod
+    def printNationality():
+        return "American"
+
+print('Nationality is', American.printNationality())
 
 
 
@@ -981,6 +1152,22 @@ Hints:
 
 Use class Subclass(ParentClass) to define a subclass.
 
+-----------Program: classamerican.py---------------
+class American:
+    name="American"
+    def getName(self):
+        print(self.name)
+
+class Newyorker(American):
+    def getName(self):
+        print(self.name)
+
+a=American()
+a.getName()
+
+b=Newyorker()
+b.name="Hello"
+b.getName()
 
 
 
